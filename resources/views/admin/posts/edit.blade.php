@@ -35,15 +35,21 @@
             </div>
 
             <div class="mb-3">
-                <h3>Tags</h3>
-                @foreach($tags as $tag)
-                    <input type="checkbox" value="{{$tag->id}}" id="tag{{$loop->iteration}}" name="tag[]"
-                    @if($post->tags->contains( $tag->id ))
-                        checked
-                    @endif>
-                    <label for="tag{{$loop->iteration}}" class="mr-3">{{$tag->name}}</label>
-                @endforeach
+            <label for="">Scegli tags</label>
+                <div class="mb-3 d-flex">
+                    @foreach($tags as $tag)
+                        <div class="mx-2">
+                            <input type="checkbox" id="tag{{$loop->iteration}}" name="tags[]" value="{{$tag->id}}"
+                            @if($post->tags->contains($tag->id))
+                                checked
+                            @endif>
+                            <label for="tag{{$loop->iteration}}">{{$tag->name}}</label>
+                        </div>
+                    @endforeach
+                </div>
             </div>
+
+                
             
             <div class="mb-3">
                 <label for="desc" class="form-label">Descrizione</label>

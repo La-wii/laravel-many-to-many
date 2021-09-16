@@ -102,7 +102,7 @@ class PostController extends Controller
         $post->update($data);
 
         if(array_key_exists('tags',$data)){
-            $newPost->tags()->sync($data['tags']);
+            $post->tags()->sync($data['tags']);
         }
 
         return redirect()->route('admin.posts.index')->with('updated', 'Hai modificato il post ' . $post->id);
@@ -117,6 +117,7 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
+
         $post->tags()->detach();
         return redirect()->route('admin.posts.index')->with('deleted', 'Hai eliminato il post ' . $post->id);
     }
