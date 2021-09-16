@@ -39,6 +39,17 @@
             </div>
 
             <div class="mb-3">
+                <h3>Tags</h3>
+                @foreach($tags as $tag)
+                    <input type="checkbox" value="{{$tag->id}}" id="tag{{$loop->iteration}}" name="tag[]"
+                    @if(in_array($tag->id, old('tags', [])))
+                    checked
+                    @endif>
+                    <label for="tag{{$loop->iteration}}" class="mr-3">{{$tag->name}}</label>
+                @endforeach
+            </div>
+
+            <div class="mb-3">
                 <label for="desc" class="form-label">Descrizione</label>
                 <textarea class="form-control" name="content" id="desc" cols="30" rows="10"></textarea>            
             </div>
